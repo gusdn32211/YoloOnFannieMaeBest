@@ -1,0 +1,16 @@
+.navMargin {
+  margin-top: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+  margin-right: auto;
+  margin-left: auto;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.floatRight {
+	float: right;
+}
