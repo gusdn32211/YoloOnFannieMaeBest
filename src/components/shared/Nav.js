@@ -8,25 +8,20 @@ export default class Nav extends React.Component {
     return (
       <nav className="navbar navbar-inverse navbar-fixed-top">
         <div className="container">
-          <div>
             <ul className="nav navbar-nav">
               <li>
-                <IndexLink to="/">Home</IndexLink>
-              </li>
-              <li>
-                <Link to="personal">Personal</Link>
-              </li>
-              <li>
-                <Link to="settings">Settings</Link>
+                <Link className="navbarHeader">Yolo On Fannie Mae</Link>
               </li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li>
-                <Link to="">Lol</Link>
+                <IndexLink to="\">Best Stocks</IndexLink>
+              </li>
+              <li>
+                <Link to="yolo">Yolo</Link>
               </li>
             </ul>
           </div>
-        </div>
       </nav>
     );
   }

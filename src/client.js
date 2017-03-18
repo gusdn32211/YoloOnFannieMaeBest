@@ -3,10 +3,10 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { Router, Route, IndexRoute, browserHistory } from "react-router";
 import { render } from 'react-dom';
-import Personal from "./components/Personal";
+import Yolo from "./components/Yolo";
+import Stocks from "./components/Stocks";
 import Home from "./components/Home";
 import App from "./components/App";
-import Settings from "./components/Settings";
 
 import store from "./store"
 
@@ -16,9 +16,8 @@ ReactDOM.render(
 	<Provider store={store}>
 	  <Router history={browserHistory}>
 	    <Route path="/" component={App}>
-	      <IndexRoute component={Home}></IndexRoute>
-		  <Route path="personal" name="personal" component={Personal}></Route>
-	      <Route path="settings" name="settings" component={Settings}></Route>
+	      <IndexRoute component={Stocks}></IndexRoute>
+	      <Route path="yolo" name="yolo" component={Yolo}></Route>
 	    </Route>
 	  </Router>
   </Provider>,
