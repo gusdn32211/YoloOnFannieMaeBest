@@ -1,3 +1,14 @@
-export default {
-  "a", "b", "c", "d", "e", "f", "g", "h", "i", "j"
-}
+export default [
+  {
+    "name":  "Advanced Micro Devices",
+    "ticker": "AMD"
+  },
+  {
+    "name":  "Toronto Dominion",
+    "ticker": "TD"
+  }, 
+  {
+    "name":  "NVIDIA",
+    "ticker": "NVDA"
+  }
+]
