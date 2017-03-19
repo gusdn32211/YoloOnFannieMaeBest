@@ -15,7 +15,7 @@ export default class Nav extends React.Component {
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li>
-                <IndexLink to="\">Best Stocks</IndexLink>
+                <IndexLink to="/">Best Stocks</IndexLink>
               </li>
               <li>
                 <Link to="yolo">Yolo</Link>
