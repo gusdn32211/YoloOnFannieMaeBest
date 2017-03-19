@@ -44,7 +44,7 @@ export const stockTickerSelector = createSelector(
 	(ticker) => {
 		if (ticker) {
 			const length = ticker.length;
-			ticker = ticker.slice(1, length);
+			ticker = ticker.toString().slice(1, length);
 			return ticker;
 		}
 		else return ""
