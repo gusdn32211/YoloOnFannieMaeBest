@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import {getYoloStock } from "../actions/yoloAction"
+import { getYoloStock } from "../actions/yoloAction"
 import { setStockData, clearSelectedStock } from "../actions/stockAction";
 import { yoloSelector, filteredYoloStockDataSelector, fetchYoloStockStateSelector, selectedStockSelector, stockTickerSelector } from "../selectors";
 import TableCells from "./shared/TableCells";
@@ -10,13 +10,12 @@ import TableCells from "./shared/TableCells";
 class Yolo extends React.Component {
   constructor(props) {
    super(props);
-   this.onButtonClicked = this.onButtonClicked.bind(this);
-   this.getView = this.getView.bind(this);
-   this.stockData = this.stockData.bind(this);
+   this.yoloButton = this.yoloButton.bind(this)
   }
 
-  onButtonClicked() {
-  	this.props.getYoloStock();
+  yoloButton(event) {
+  	event.preventDefault();
+  	this.props.getYoloStock()
   }
 
   stockData() {
@@ -37,7 +36,7 @@ class Yolo extends React.Component {
   	if (!this.props.yolo)
 			return (
 				<div className="wrapper">
-					<button type="button" className="btn-lg btn-danger yoloButton" onClick= {this.onButtonClicked}>YOLO</button>
+					<button type="button" className="btn-lg btn-danger yoloButton" onClick={this.yoloButton(event)}>Yolo Buy</button>
 				</div>
 			)
 		else if (this.props.fetchYoloStockStateSelector)
@@ -45,7 +44,7 @@ class Yolo extends React.Component {
 				<div>
 					<h1 className="loading">Please wait while we are predicting semantic analysis...</h1>
 					<h1 className="loading">Check out our <a href="https://www.facebook.com/felist123/">Facebook Page</a></h1>
-					<img src={`http://vignette1.wikia.nocookie.net/sanicsource/images/9/97/Doge.jpg/revision/latest?cb=20160112233015`}/>
+					<img src="http://vignette1.wikia.nocookie.net/sanicsource/images/9/97/Doge.jpg/revision/latest?cb=20160112233015"/>
 				</div>
 			)
 		else if (this.props.selectedStock)

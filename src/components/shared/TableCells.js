@@ -8,8 +8,7 @@ export default class TableCells extends React.Component {
 	}
 
 	setStockTicker(event) {
-		this.props.setStockTicker(this.props.ticker)
-		this.props.setStockName(this.props.name)
+		this.props.setStockData(this.props.ticker)
 	}
 
 	tableScoreAnalysis() {
