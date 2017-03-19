@@ -11,6 +11,14 @@ export default class TableCells extends React.Component {
 		this.props.setStockData(this.props.ticker)
 	}
 
+	tableScoreAnalysis() {
+		if (this.props.analysis_score){
+			return (
+				<td>{this.props.analysis_score}</td>
+			)
+		}
+	}
+
   render() {
     return (
 		<tr>
@@ -20,6 +28,8 @@ export default class TableCells extends React.Component {
 					{this.props.name}
 				</a>
 			</td>
+			<td>{this.props.price}</td>
+			{this.tableScoreAnalysis()}
 		</tr>
     );
   }

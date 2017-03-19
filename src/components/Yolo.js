@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 import {getYoloStock } from "../actions/yoloAction"
 import { setStockData, clearSelectedStock } from "../actions/stockAction";
 import { yoloSelector, filteredYoloStockDataSelector, fetchYoloStockStateSelector, selectedStockSelector, stockTickerSelector } from "../selectors";
-import TableCellsWithScore from "./shared/TableCellsWithScore";
+import TableCells from "./shared/TableCells";
 
 
 class Yolo extends React.Component {
@@ -22,14 +22,14 @@ class Yolo extends React.Component {
   stockData() {
 	return _.map(this.props.filteredYoloStockDataSelector, (stock) => {
 	return (
-		<TableCellsWithScore
+		<TableCells
 			key={stock.ticker}
 			setStockData={this.props.setStockData}
 			ticker={stock.ticker}
 			name={stock.name}
 			price={stock.price}
 			analysis_score={stock.analysis_score} >
-		</TableCellsWithScore>
+		</TableCells>
 		)
 	})
   }
