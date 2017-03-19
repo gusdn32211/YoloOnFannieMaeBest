@@ -5,6 +5,7 @@ export function setStockData(stockName) {
 	}
 }
 
+
 export function clearSelectedStock() {
 	return {
 		type: 'CLEAR_SELECTED_STOCK',

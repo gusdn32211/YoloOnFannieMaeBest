@@ -15,7 +15,7 @@ export const filteredStockDataSelector = createSelector(
 			return filteredData
 		}
 		else return [{
-		    "count": 0, 
+		    "count": 0,
 		    "ticker": "$FNMA",
 		    "name": "Federal National Mortgage Assctn Fnni Me"
 		}]
@@ -30,7 +30,7 @@ export const filteredYoloStockDataSelector = createSelector(
 			return sortedData
 		}
 		else return [{
-		    "count": 0, 
+		    "count": 0,
 		    "ticker": "$FNMA",
 		    "name": "Federal National Mortgage Assctn Fnni Me",
 		    "price": "0.00",
@@ -44,7 +44,7 @@ export const stockTickerSelector = createSelector(
 	(ticker) => {
 		if (ticker) {
 			const length = ticker.length;
-			ticker = ticker.slice(1, length);
+			ticker = ticker.toString().slice(1, length);
 			return ticker;
 		}
 		else return ""

@@ -4,13 +4,12 @@ import webpack from 'webpack';
 export default {
 	devtools: 'eval-source-map',
 	entry: [
-		'webpack-hot-middleware/client',
 		path.join(__dirname, '/src/client.js'),
 	],
 	output: {
       path: '/',
       publicPath: '/'
-  	},	
+  	},
   	plugins: [
 	  	new webpack.NoErrorsPlugin(),
 	  	new webpack.optimize.OccurenceOrderPlugin(),
@@ -20,7 +19,7 @@ export default {
 		loaders: [
 		 {
 		 	test: /\.js$/,
-		 	include: [ 
+		 	include: [
 		 		path.join(__dirname, 'src'),
 		 		path.join(__dirname, 'server/shared')
 		 	],

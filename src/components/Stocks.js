@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import _ from "lodash";
-import { filteredStockDataSelector, selectedStockSelector, stockTickerSelector } from "../selectors";
+import { filteredStockDataSelector, stockTickerSelector } from "../selectors";
 import { setStockData, clearSelectedStock } from "../actions/stockAction";
 import TableCells from "./shared/TableCells";
 
@@ -13,7 +13,7 @@ class Stocks extends React.Component {
 	}
 
 	stockView() {
-		if (!this.props.selectedStock) {
+		if (!this.props.stockTicker) {
 			return (
 	    	<table className="table table-striped">
 			    <thead>
@@ -32,7 +32,7 @@ class Stocks extends React.Component {
 			<div>
 				<button type="button" className="btn btn-danger" onClick={this.props.clearSelectedStock}>Back</button>
 				<h1>{this.props.selectedStock}</h1>
-				<img className="graph" src={`https://chart.finance.yahoo.com/z?s=${this.props.stockTicker}&t=6m&q=l&l=on&z=s&p=m50,e200,v&a=p12,p`}/>
+  			<img className="graph" src={`https://chart.finance.yahoo.com/z?s=${this.props.stockTicker}&t=6m&q=l&l=on&z=s&p=m50,e200,v&a=p12,p`}/>
 			</div>
 		)
 	}
@@ -61,7 +61,6 @@ class Stocks extends React.Component {
 function mapStateToProps(state) {
 	return {
 		filteredStock: filteredStockDataSelector(state),
-		selectedStock: selectedStockSelector(state),
 		stockTicker: stockTickerSelector(state)
 	}
 }
