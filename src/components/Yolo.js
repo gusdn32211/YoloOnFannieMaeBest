@@ -2,8 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getYoloStock } from "../actions/yoloAction"
-import { setStockData, clearSelectedStock } from "../actions/stockAction";
-import { yoloSelector, filteredYoloStockDataSelector, fetchYoloStockStateSelector, selectedStockSelector, stockTickerSelector } from "../selectors";
+import { setSelectedYolo, clearSelectedYoloStock } from "../actions/yoloAction";
+import { 
+	filteredYoloStockDataSelector,
+	yoloStockTickerSelector,
+	yoloStockStateSelector,
+	selectedYoloStockSelector
+} from "../selectors";
 import TableCells from "./shared/TableCells";
 
 
@@ -13,17 +18,16 @@ class Yolo extends React.Component {
    this.yoloButton = this.yoloButton.bind(this)
   }
 
-  yoloButton(event) {
-  	event.preventDefault();
+  yoloButton() {
   	this.props.getYoloStock()
   }
 
   stockData() {
-	return _.map(this.props.filteredYoloStockDataSelector, (stock) => {
+	return _.map(this.props.filteredYoloStockData, (stock) => {
 		return (
 			<TableCells
 				key={stock.ticker}
-				setStockData={this.props.setStockData}
+				setStockData={this.props.setSelectedYolo}
 				ticker={stock.ticker}
 				name={stock.name}
 				price={stock.price}
@@ -33,13 +37,31 @@ class Yolo extends React.Component {
 	})
   }
   getView() {
-  	if (!this.props.yolo)
+		if (this.props.selectedYoloStock)
 			return (
-				<div className="wrapper">
-					<button type="button" className="btn-lg btn-danger yoloButton" onClick={this.yoloButton(event)}>Yolo Buy</button>
+				<div>
+					<button type="button" className="btn btn-danger" onClick={this.props.clearSelectedYoloStock}>Back</button>
+					<h1>{this.props.yoloStockTicker}</h1>
+					<img className="graph" src={`https://chart.finance.yahoo.com/z?s=${this.props.yoloStockTicker}&t=6m&q=l&l=on&z=s&p=m50,e200,v&a=p12,p`}/>
 				</div>
 			)
-		else if (this.props.fetchYoloStockStateSelector)
+		if (this.props.yoloStockState.fetched) 
+			return (
+	    	<table className="table table-striped">
+			    <thead>
+			      <tr>
+			        <th>Ticker</th>
+			        <th>Name</th>
+			        <th>Price</th>
+			        <th>Analysis Score</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			    {this.stockData()}
+	    	  </tbody>
+	    	</table>
+			)
+		if (this.props.yoloStockState.fetching)
 			return (
 				<div>
 					<h1 className="loading">Please wait while we are predicting semantic analysis...</h1>
@@ -47,30 +69,11 @@ class Yolo extends React.Component {
 					<img src="http://vignette1.wikia.nocookie.net/sanicsource/images/9/97/Doge.jpg/revision/latest?cb=20160112233015"/>
 				</div>
 			)
-		else if (this.props.selectedStock)
-			return (
-				<div>
-					<button type="button" className="btn btn-danger" onClick={this.props.clearSelectedStock}>Back</button>
-					<h1>{this.props.selectedStock}</h1>
-					<img className="graph" src={`https://chart.finance.yahoo.com/z?s=${this.props.stockTicker}&t=6m&q=l&l=on&z=s&p=m50,e200,v&a=p12,p`}/>
+			else return (
+				<div className="wrapper">
+					<button type="button" className="btn-lg btn-danger yoloButton" onClick={this.yoloButton}>Yolo Buy</button>
 				</div>
 			)
-			else
-				return (
-		    	<table className="table table-striped">
-				    <thead>
-				      <tr>
-				        <th>Ticker</th>
-				        <th>Name</th>
-				        <th>Price</th>
-				        <th>Analysis Score</th>
-				      </tr>
-				    </thead>
-				    <tbody>
-				    {this.stockData()}
-		    	  </tbody>
-		    	</table>
-				)
 	}
 
   render() {
@@ -85,19 +88,18 @@ class Yolo extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-		selectedStock: selectedStockSelector(state),
-		stockTicker: stockTickerSelector(state),
-		yolo: yoloSelector(state),
-		filteredYoloStockDataSelector: filteredYoloStockDataSelector(state),
-		fetchYoloStockStateSelector: fetchYoloStockStateSelector(state)
+		filteredYoloStockData: filteredYoloStockDataSelector(state),
+		yoloStockState: yoloStockStateSelector(state),
+		selectedYoloStock: selectedYoloStockSelector(state),
+		yoloStockTicker: yoloStockTickerSelector(state)
 	}
 } 
 
 function matchDispatchToProps(dispatch) {
 	return bindActionCreators({
 		getYoloStock: getYoloStock,
-		setStockData: setStockData,
-		clearSelectedStock: clearSelectedStock
+		setSelectedYolo: setSelectedYolo,
+		clearSelectedYoloStock: clearSelectedYoloStock
 	}, dispatch)
 }
 

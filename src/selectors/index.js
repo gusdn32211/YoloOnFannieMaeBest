@@ -1,10 +1,12 @@
 import { createSelector } from 'reselect'
 
-export const yoloSelector = (state) => state.yolo.showStock
 export const fetchStockDataSelector = (state) => state.fetchStockData.data
 export const selectedStockSelector = (state) => state.selectedStock
 export const fetchYoloStockDataSelector = (state) => state.fetchYoloStock.data
-export const fetchYoloStockStateSelector = (state) => state.fetchYoloStock.fetching
+export const fetchingYoloStockStateSelector = (state) => state.fetchYoloStock.fetching
+export const fetchedYoloStockStateSelector = (state) => state.fetchYoloStock.fetched
+export const yoloStockStateSelector = (state) => state.fetchYoloStock
+export const selectedYoloStockSelector = (state) => state.selectedYoloStock
 
 export const filteredStockDataSelector = createSelector(
 	fetchStockDataSelector,
@@ -41,6 +43,18 @@ export const filteredYoloStockDataSelector = createSelector(
 
 export const stockTickerSelector = createSelector(
 	selectedStockSelector,
+	(ticker) => {
+		if (ticker) {
+			const length = ticker.length;
+			ticker = ticker.toString().slice(1, length);
+			return ticker;
+		}
+		else return ""
+	}
+)
+
+export const yoloStockTickerSelector = createSelector(
+	selectedYoloStockSelector,
 	(ticker) => {
 		if (ticker) {
 			const length = ticker.length;

@@ -4,10 +4,10 @@ export default class TableCells extends React.Component {
 
 	constructor(props) {
 	   super(props);
-	   this.setStockTicker = this.setStockTicker.bind(this);
+	   this.setStockData = this.setStockData.bind(this);
 	}
 
-	setStockTicker(event) {
+	setStockData(event) {
 		this.props.setStockData(this.props.ticker)
 	}
 
@@ -24,7 +24,7 @@ export default class TableCells extends React.Component {
 		<tr>
 			<td>{this.props.ticker}</td>
 			<td>
-				<a onClick={this.setStockTicker}>
+				<a onClick={this.setStockData}>
 					{this.props.name}
 				</a>
 			</td>

@@ -14,9 +14,4 @@ store.dispatch({
 	payload: axios.get("http://yolo-on-fannie-mae.herokuapp.com/shares")
 })
 
-store.dispatch({
-	type: "FETCH_YOLO_STOCK",
-	payload: axios.get("http://yolo-on-fannie-mae.herokuapp.com/yolo_buy")
-})
-
 export default store;

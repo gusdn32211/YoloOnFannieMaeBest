@@ -1,12 +1,11 @@
-const initialState= {
-	showStock: false
-}
-
-const yoloReducer = (state=initialState, action) => {
+const yoloReducer = (state="", action) => {
 	switch(action.type) {
-		case "GET_YOLO_STOCK": {
-			return {...state, showStock: true}
+		case "SET_SELECTED_YOLO": {
+			return action.payload
 			break;
+		}
+		case "CLEAR_SELECTED_YOLO_STOCK": {
+			return ""
 		}
 	}
 	return state;
