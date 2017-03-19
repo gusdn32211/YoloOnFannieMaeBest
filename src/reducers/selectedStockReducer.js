@@ -1,11 +1,20 @@
-const selectedStockReducer = (state=null, action) => {
+const initialState= {
+	ticker: "",
+	name: "",
+}
+
+const selectedStockReducer = (state=initialState, action) => {
 	switch(action.type) {
-		case "SET_SELECTED_STOCK": {
-			return action.payload
+		case "SET_SELECTED_STOCK_TICKER": {
+			return {...state, ticker: action.payload}
+			break;
+		}
+		case "SET_SELECTED_STOCK_NAME": {
+			return {...state, name: action.payload}
 			break;
 		}
 		case "CLEAR_SELECTED_STOCK": {
-			return false
+			return {...state, ticker: ""}
 		}
 	}
 	return state;

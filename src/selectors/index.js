@@ -2,7 +2,8 @@ import { createSelector } from 'reselect'
 
 export const yoloSelector = (state) => state.yolo.showStock
 export const fetchStockDataSelector = (state) => state.fetchStockData.data
-export const selectedStockSelector = (state) => state.selectedStock
+export const selectedStockTickerSelector = (state) => state.selectedStock.ticker
+export const selectedStockNameSelector = (state) => state.selectedStock.name
 export const fetchYoloStockSelector = (state) => state.fetchYoloStock
 
 export const filteredStockDataSelector = createSelector(
@@ -22,7 +23,7 @@ export const filteredStockDataSelector = createSelector(
 )
 
 export const stockTickerSelector = createSelector(
-	selectedStockSelector,
+	selectedStockTickerSelector,
 	(ticker) => {
 		if (ticker) {
 			const length = ticker.length;
