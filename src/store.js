@@ -12,10 +12,10 @@ const middleware = applyMiddleware(promise(), thunk, logger())
 
 const store = createStore(reducer, middleware);
 
-// store.dispatch({
-// 	type: "FETCH_DATA",
-// 	payload: axios.get("http://rest.learncode.academy/api/wstern/users")
-// })
+store.dispatch({
+	type: "FETCH_DATA",
+	payload: axios.get("http://yolo-on-fannie-mae.herokuapp.com/shares")
+})
 
 store.dispatch(setStockData(stocks))
 
