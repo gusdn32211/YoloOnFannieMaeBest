@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import _ from "lodash";
 import { filteredStockDataSelector, stockTickerSelector } from "../selectors";
-import { setStockTicker, setStockName, clearSelectedStock } from "../actions/stockAction";
+import { setStockData, clearSelectedStock } from "../actions/stockAction";
 import TableCells from "./shared/TableCells";
 
 
@@ -41,8 +41,7 @@ class Stocks extends React.Component {
     	return (
     		<TableCells
     			key={stock.ticker}
-    			setStockTicker={this.props.setStockTicker}
-    			setStockName={this.props.setStockName}
+    			setStockData={this.props.setStockData}
     			ticker={stock.ticker}
     			name={stock.name} >
     		</TableCells>
@@ -68,9 +67,8 @@ function mapStateToProps(state) {
 
 function matchDispatchToProps(dispatch) {
 	return bindActionCreators({
-		setStockTicker: setStockTicker,
-		clearSelectedStock: clearSelectedStock,
-		setStockName: setStockName
+		setStockData: setStockData,
+		clearSelectedStock: clearSelectedStock
 	}, dispatch)
 }
 

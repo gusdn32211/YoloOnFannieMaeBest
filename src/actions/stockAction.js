@@ -1,14 +1,7 @@
-export function setStockTicker(ticker) {
+export function setStockData(stockName) {
 	return {
-		type: 'SET_SELECTED_STOCK_TICKER',
-		payload: ticker
-	}
-}
-
-export function setStockName(name) {
-	return {
-		type: 'SET_SELECTED_STOCK_NAME',
-		payload: name
+		type: 'SET_SELECTED_STOCK',
+		payload: stockName
 	}
 }
 

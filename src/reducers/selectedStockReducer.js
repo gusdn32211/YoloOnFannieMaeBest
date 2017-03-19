@@ -1,6 +1,6 @@
 const selectedStockReducer = (state="", action) => {
 	switch(action.type) {
-		case "SET_SELECTED_STOCK_TICKER": {
+		case "SET_SELECTED_STOCK": {
 			return action.payload
 			break;
 		}
