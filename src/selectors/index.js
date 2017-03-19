@@ -40,7 +40,7 @@ export const filteredYoloStockDataSelector = createSelector(
 )
 
 export const stockTickerSelector = createSelector(
-	selectedStockTickerSelector,
+	selectedStockSelector,
 	(ticker) => {
 		if (ticker) {
 			const length = ticker.length;
