@@ -4,7 +4,6 @@ import webpack from 'webpack';
 export default {
 	devtools: 'eval-source-map',
 	entry: [
-    'webpack-hot-middleware/client',
 		path.join(__dirname, '/src/client.js'),
 	],
 	output: {
