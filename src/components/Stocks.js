@@ -4,11 +4,13 @@ import stocks from "../data/stocks";
 export default class Stocks extends React.Component {
   render() {
     const stockData = _.map(stocks, (stock) => {
-      	return <div key={stock.ticker}>{stock.name}</div>
+      	return (<tr key = {stock.ticker}>
+      				<td>{stock.ticker}</td>
+      				<td>{stock.name}</td>
+      			</tr>)
     })
     return (
     	<div>
-        	<div>{stockData}</div> 	
 	    	<table className="table table-striped">
 			    <thead>
 			      <tr>
@@ -17,18 +19,7 @@ export default class Stocks extends React.Component {
 			      </tr>
 			    </thead>
 			    <tbody>
-		      <tr>
-		        <td>John</td>
-		        <td>Doe</td>
-		      </tr>
-		      <tr>
-		        <td>Mary</td>
-		        <td>Moe</td>
-		      </tr>
-		      <tr>
-		        <td>July</td>
-		        <td>Dooley</td>
-		      </tr>
+			    {stockData}
 	    	  </tbody>
 	    	</table>
     	</div>
