@@ -4,31 +4,28 @@ import { bindActionCreators } from "redux";
 import _ from "lodash";
 import { filteredStockDataSelector } from "../selectors";
 import { setStockData } from "../actions/stockAction";
+import TableCells from "./shared/TableCells";
+
 
 class Stocks extends React.Component {
 	constructor(props) {
    super(props);
-   this.setStockData = this.setStockData.bind(this);
 	}
 
-	setStockData() {
-		// event.preventDefault();
-		this.props.setStockData("stockName")
+	stockData() {
+		return _.map(this.props.filteredStock, (stock) => {
+    	return (
+    		<TableCells
+    			key={stock.ticker}
+    			setStockData={this.props.setStockData}
+    			ticker={stock.ticker}
+    			name={stock.name} >
+    		</TableCells>
+  		)
+    })
 	}
 
   render() {
-    const stockData = _.map(this.props.filteredStock, (stock) => {
-    	return (
-    		<tr key={stock.ticker}>
-  				<td>{stock.ticker}</td>
-  				<td>
-  					<div onClick={this.setStockData}>
-	  					{stock.name}
-  					</div>
-  				</td>
-  			</tr>
-  		)
-    })
     return (
     	<div>
 	    	<table className="table table-striped">
@@ -39,7 +36,7 @@ class Stocks extends React.Component {
 			      </tr>
 			    </thead>
 			    <tbody>
-			    {stockData}
+			    {this.stockData()}
 	    	  </tbody>
 	    	</table>
     	</div>
