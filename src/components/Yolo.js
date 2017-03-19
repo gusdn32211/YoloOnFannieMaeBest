@@ -33,8 +33,7 @@ class Yolo extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-		yolo: yoloSelector(state),
-		stock: stockSelector(state)
+		yolo: yoloSelector(state)
 	}
 } 
 

@@ -1,25 +1,25 @@
 const initialState= {
 	fetching: false,
 	fetched: false,
-	users: [],
+	data: [],
 	error: null,
 }
 
-const fetchDataReducer = (state=initialState, action) => {
+const fetchStockDataReducer = (state=initialState, action) => {
 	switch(action.type) {
-		case "FETCH_DATA_PENDING": {
+		case "FETCH_STOCK_DATA_PENDING": {
 			return {...state, fetching: true}
 			break;
 		}
-		case "FETCH_DATA_REJECTED": {
+		case "FETCH_STOCK_DATA_REJECTED": {
 			return {...state, fetching: false, error: action.payload}
 			break;
 		}
-		case "FETCH_DATA_FULFILLED": {
+		case "FETCH_STOCK_DATA_FULFILLED": {
 			return {...state,
 				fetching: false,
 				fetched: true,
-				users: action.payload.data
+				data: action.payload.data
 			}
 			break;
 		}
@@ -27,4 +27,4 @@ const fetchDataReducer = (state=initialState, action) => {
 	return state;
 };
 
-export default fetchDataReducer
+export default fetchStockDataReducer

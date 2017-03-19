@@ -5,18 +5,13 @@ import thunk from "redux-thunk";
 import promise from "redux-promise-middleware"
 import axios from "axios";
 
-import { setStockData } from "./actions/stockAction";
-import stocks from "./data/stocks"
-
 const middleware = applyMiddleware(promise(), thunk, logger())
 
 const store = createStore(reducer, middleware);
 
 store.dispatch({
-	type: "FETCH_DATA",
+	type: "FETCH_STOCK_DATA",
 	payload: axios.get("http://yolo-on-fannie-mae.herokuapp.com/shares")
 })
-
-store.dispatch(setStockData(stocks))
 
 export default store;
