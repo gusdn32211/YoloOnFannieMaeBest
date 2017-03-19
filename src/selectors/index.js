@@ -76,3 +76,15 @@ export const selectedYoloStockDataSelector = createSelector(
 		else return {}
 	}
 )
+
+export const selectedStockDataSelector = createSelector(
+	fetchStockDataSelector,
+	selectedStockSelector,
+	(data, stockTicker) => {
+		if (data) {
+			let selectedData = _.find(data, { 'ticker': stockTicker });
+			return selectedData;
+		}
+		else return {}
+	}
+)
