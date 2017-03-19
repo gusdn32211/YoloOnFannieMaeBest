@@ -3,6 +3,7 @@ const initialState= {
 	fetched: false,
 	data: [],
 	error: null,
+	sorted: "analysis_score"
 }
 
 const fetchYoloStockReducer = (state=initialState, action) => {
@@ -25,6 +26,9 @@ const fetchYoloStockReducer = (state=initialState, action) => {
 		}
 		case "CLEAR_YOLO_DATA": {
 			return initialState
+		}
+		case "SORT_YOLO_DATA": {
+			return {...state, sorted: action.payload}
 		}
 	}
 	return state;

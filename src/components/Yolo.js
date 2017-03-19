@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getYoloStock } from "../actions/yoloAction"
-import { setSelectedYolo, clearSelectedYoloStock } from "../actions/yoloAction";
+import { setSelectedYolo, clearSelectedYoloStock, sortYoloData } from "../actions/yoloAction";
 import { 
 	filteredYoloStockDataSelector,
 	yoloStockTickerSelector,
@@ -11,16 +11,21 @@ import {
 	selectedYoloStockDataSelector
 } from "../selectors";
 import TableCells from "./shared/TableCells";
-
+import TableHeaders from "./shared/TableHeaders";
 
 class Yolo extends React.Component {
   constructor(props) {
    super(props);
    this.yoloButton = this.yoloButton.bind(this)
+   this.sortByTableHeader = this.sortByTableHeader.bind(this)
   }
 
   yoloButton() {
   	this.props.getYoloStock()
+  }
+
+  sortByTableHeader(header) {
+  	this.props.sortYoloData(header);
   }
 
   stockDataTable() {
@@ -67,14 +72,11 @@ class Yolo extends React.Component {
 		if (this.props.yoloStockState.fetched) 
 			return (
 	    	<table className="table table-striped">
-			    <thead>
-			      <tr>
-			        <th>Ticker</th>
-			        <th>Name</th>
-			        <th>Price</th>
-			        <th>Analysis Score</th>
-			      </tr>
-			    </thead>
+			    <TableHeaders 
+			    	sortData={this.props.sortYoloData}
+			    	price={true}
+			    	analysis_score={true}>
+		    	</TableHeaders>
 			    <tbody>
 			    {this.stockDataTable()}
 	    	  </tbody>
@@ -119,7 +121,8 @@ function matchDispatchToProps(dispatch) {
 	return bindActionCreators({
 		getYoloStock: getYoloStock,
 		setSelectedYolo: setSelectedYolo,
-		clearSelectedYoloStock: clearSelectedYoloStock
+		clearSelectedYoloStock: clearSelectedYoloStock,
+		sortYoloData: sortYoloData
 	}, dispatch)
 }
 

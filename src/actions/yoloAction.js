@@ -26,7 +26,9 @@ export function clearYoloData() {
 	}
 }
 
-// store.dispatch({
-// 	type: "FETCH_YOLO_STOCK",
-// 	payload: axios.get("http://yolo-on-fannie-mae.herokuapp.com/yolo_buy")
-// })
+export function sortYoloData(columnHeader) {
+	return {
+		type: 'SORT_YOLO_DATA',
+		payload: columnHeader
+	}
+}

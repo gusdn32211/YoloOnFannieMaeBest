@@ -2,11 +2,13 @@ import { createSelector } from 'reselect'
 
 export const fetchStockDataSelector = (state) => state.fetchStockData.data
 export const selectedStockSelector = (state) => state.selectedStock
+
+export const yoloStockStateSelector = (state) => state.fetchYoloStock
 export const fetchYoloStockDataSelector = (state) => state.fetchYoloStock.data
 export const fetchingYoloStockStateSelector = (state) => state.fetchYoloStock.fetching
 export const fetchedYoloStockStateSelector = (state) => state.fetchYoloStock.fetched
-export const yoloStockStateSelector = (state) => state.fetchYoloStock
 export const selectedYoloStockSelector = (state) => state.selectedYoloStock
+export const sortedYoloStockTableColumnSelector = (state) => state.fetchYoloStock.sorted
 
 export const filteredStockDataSelector = createSelector(
 	fetchStockDataSelector,
@@ -26,9 +28,10 @@ export const filteredStockDataSelector = createSelector(
 
 export const filteredYoloStockDataSelector = createSelector(
 	fetchYoloStockDataSelector,
-	(data) => {
+	sortedYoloStockTableColumnSelector,
+	(data, columnHeader) => {
 		if (data) {
-			let sortedData = _.sortBy(data, ['analysis_score']).reverse();
+			let sortedData = _.sortBy(data, [columnHeader]).reverse();
 			return sortedData
 		}
 		else return [{
