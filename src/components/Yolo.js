@@ -1,14 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { 
+import {
 	setSelectedYolo,
 	clearSelectedYoloStock,
 	sortYoloData,
 	getYoloShortStock,
-	getYoloStock 
+	getYoloStock
 } from "../actions/yoloAction";
-import { 
+import {
 	filteredYoloStockDataSelector,
 	yoloStockTickerSelector,
 	yoloStockStateSelector,
@@ -73,16 +73,16 @@ class Yolo extends React.Component {
 								<td>{this.props.selectedYoloStockData.name}</td>
 								<td>{this.props.selectedYoloStockData.price}</td>
 								<td>{this.props.selectedYoloStockData.analysis_score}</td>
-							</tr>		    	  
+							</tr>
 						</tbody>
 		    	</table>
 					<img className="graph" src={`https://chart.finance.yahoo.com/z?s=${this.props.yoloStockTicker}&t=6m&q=l&l=on&z=s&p=m50,e200,v&a=p12,p`}/>
 				</div>
 			)
-		if (this.props.yoloStockState.fetched) 
+		if (this.props.yoloStockState.fetched)
 			return (
 	    	<table className="table table-striped">
-			    <TableHeaders 
+			    <TableHeaders
 			    	sortData={this.props.sortYoloData}
 			    	price={true}
 			    	analysis_score={true}>
@@ -96,7 +96,7 @@ class Yolo extends React.Component {
 			return (
 				<div>
 					<h1 className="loading">Please wait while we are predicting semantic analysis...</h1>
-					<h1 className="loading">Check out our <a href="https://www.facebook.com/felist123/">Facebook Page</a></h1>
+					<h1 className="loading">Check out our <a href="https://www.facebook.com/YoloOnFNMA-211269462684651/">Facebook Page</a></h1>
 					<img className="doge" src="http://vignette1.wikia.nocookie.net/sanicsource/images/9/97/Doge.jpg/revision/latest?cb=20160112233015"/>
 				</div>
 			)
@@ -126,7 +126,7 @@ function mapStateToProps(state) {
 		yoloStockTicker: yoloStockTickerSelector(state),
 		selectedYoloStockData: selectedYoloStockDataSelector(state)
 	}
-} 
+}
 
 function matchDispatchToProps(dispatch) {
 	return bindActionCreators({
