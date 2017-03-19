@@ -7,7 +7,8 @@ import {
 	filteredYoloStockDataSelector,
 	yoloStockTickerSelector,
 	yoloStockStateSelector,
-	selectedYoloStockSelector
+	selectedYoloStockSelector,
+	selectedYoloStockDataSelector
 } from "../selectors";
 import TableCells from "./shared/TableCells";
 
@@ -22,7 +23,7 @@ class Yolo extends React.Component {
   	this.props.getYoloStock()
   }
 
-  stockData() {
+  stockDataTable() {
 	return _.map(this.props.filteredYoloStockData, (stock) => {
 		return (
 			<TableCells
@@ -42,6 +43,24 @@ class Yolo extends React.Component {
 				<div>
 					<button type="button" className="btn btn-danger" onClick={this.props.clearSelectedYoloStock}>Back</button>
 					<h1>{this.props.yoloStockTicker}</h1>
+					<table className="table table-striped">
+				    <thead>
+				      <tr>
+				        <th>Ticker</th>
+				        <th>Name</th>
+				        <th>Price</th>
+				        <th>Analysis Score</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+							<tr>
+								<td>{this.props.selectedYoloStockData.ticker}</td>
+								<td>{this.props.selectedYoloStockData.name}</td>
+								<td>{this.props.selectedYoloStockData.price}</td>
+								<td>{this.props.selectedYoloStockData.analysis_score}</td>
+							</tr>		    	  
+						</tbody>
+		    	</table>
 					<img className="graph" src={`https://chart.finance.yahoo.com/z?s=${this.props.yoloStockTicker}&t=6m&q=l&l=on&z=s&p=m50,e200,v&a=p12,p`}/>
 				</div>
 			)
@@ -57,7 +76,7 @@ class Yolo extends React.Component {
 			      </tr>
 			    </thead>
 			    <tbody>
-			    {this.stockData()}
+			    {this.stockDataTable()}
 	    	  </tbody>
 	    	</table>
 			)
@@ -91,7 +110,8 @@ function mapStateToProps(state) {
 		filteredYoloStockData: filteredYoloStockDataSelector(state),
 		yoloStockState: yoloStockStateSelector(state),
 		selectedYoloStock: selectedYoloStockSelector(state),
-		yoloStockTicker: yoloStockTickerSelector(state)
+		yoloStockTicker: yoloStockTickerSelector(state),
+		selectedYoloStockData: selectedYoloStockDataSelector(state)
 	}
 } 
 

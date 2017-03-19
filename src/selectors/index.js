@@ -64,3 +64,15 @@ export const yoloStockTickerSelector = createSelector(
 		else return ""
 	}
 )
+
+export const selectedYoloStockDataSelector = createSelector(
+	fetchYoloStockDataSelector,
+	selectedYoloStockSelector,
+	(data, stockTicker) => {
+		if (data) {
+			let selectedData = _.find(data, { 'ticker': stockTicker });
+			return selectedData;
+		}
+		else return {}
+	}
+)
