@@ -1,8 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { getYoloStock } from "../actions/yoloAction"
-import { setSelectedYolo, clearSelectedYoloStock, sortYoloData } from "../actions/yoloAction";
+import { 
+	setSelectedYolo,
+	clearSelectedYoloStock,
+	sortYoloData,
+	getYoloShortStock,
+	getYoloStock 
+} from "../actions/yoloAction";
 import { 
 	filteredYoloStockDataSelector,
 	yoloStockTickerSelector,
@@ -16,12 +21,17 @@ import TableHeaders from "./shared/TableHeaders";
 class Yolo extends React.Component {
   constructor(props) {
    super(props);
-   this.yoloButton = this.yoloButton.bind(this)
-   this.sortByTableHeader = this.sortByTableHeader.bind(this)
+   this.yoloButton = this.yoloButton.bind(this);
+   this.yoloShortButton = this.yoloShortButton.bind(this);
+   this.sortByTableHeader = this.sortByTableHeader.bind(this);
   }
 
   yoloButton() {
   	this.props.getYoloStock()
+  }
+
+  yoloShortButton() {
+  	this.props.getYoloShortStock()
   }
 
   sortByTableHeader(header) {
@@ -92,7 +102,8 @@ class Yolo extends React.Component {
 			)
 			else return (
 				<div className="wrapper">
-					<button type="button" className="btn-lg btn-danger yoloButton" onClick={this.yoloButton}>Yolo Buy</button>
+					<button type="button" className="btn-lg btn-danger yoloBuyButton" onClick={this.yoloButton}>Yolo Buy</button>
+					<button type="button" className="btn-lg btn-danger yoloShortButton" onClick={this.yoloShortButton}>Yolo Short</button>
 				</div>
 			)
 	}
@@ -122,7 +133,8 @@ function matchDispatchToProps(dispatch) {
 		getYoloStock: getYoloStock,
 		setSelectedYolo: setSelectedYolo,
 		clearSelectedYoloStock: clearSelectedYoloStock,
-		sortYoloData: sortYoloData
+		sortYoloData: sortYoloData,
+		getYoloShortStock: getYoloShortStock
 	}, dispatch)
 }
 

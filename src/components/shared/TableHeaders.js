@@ -29,7 +29,10 @@ export default class TableHeaders extends React.Component {
 	tableScoreAnalysis() {
 		if (!!this.props.analysis_score){
 			return (
-	        <th onClick={this.sortDataByAnalysisScore}>Analysis Score</th>
+	        <th className="floatLeft" onClick={this.sortDataByAnalysisScore}>
+		        <div className="glyphicon glyphicon-sort-by-attributes-alt sortIcon" aria-hidden="true"></div>
+						Analysis Score
+	        </th>
 			)
 		}
 	}
@@ -37,7 +40,10 @@ export default class TableHeaders extends React.Component {
 	tablePrice() {
 		if (!!this.props.price){
 			return (
-	        <th onClick={this.sortDataByPrice}>Prices</th>
+	        <th className="floatLeft" onClick={this.sortDataByPrice}>
+		        <div className="glyphicon glyphicon-sort-by-attributes-alt sortIcon" aria-hidden="true"></div>
+						Prices
+	        </th>
 			)
 		}
 	}
@@ -46,8 +52,14 @@ export default class TableHeaders extends React.Component {
     return (
 	    <thead>
 	      <tr>
-	        <th onClick={this.sortDataByTicker}>Ticker</th>
-	        <th onClick={this.sortDataByName}>Name</th>
+	        <th className="floatLeft" onClick={this.sortDataByTicker}>
+		        <div className="glyphicon glyphicon-sort-by-attributes-alt sortIcon" aria-hidden="true"></div>
+						Ticker
+					</th>
+	        <th className="floatLeft" onClick={this.sortDataByName}>
+		        <div className="glyphicon glyphicon-sort-by-attributes-alt sortIcon" aria-hidden="true"></div>
+						Name
+	        </th>
 	        {this.tablePrice()}
 	        {this.tableScoreAnalysis()}
 	      </tr>
