@@ -1,11 +1,8 @@
 import { combineReducers } from "redux";
 
-import fetchData from "./fetchDataReducer";
-import stock from "./stockReducer";
-
+import fetchStockData from "./fetchStockDataReducer";
 
 export default combineReducers({
-	fetchData: fetchData,
-	stock
+	fetchStockData: fetchStockData
 })
 
