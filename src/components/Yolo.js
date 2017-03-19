@@ -17,7 +17,6 @@ class Yolo extends React.Component {
 
   onButtonClicked() {
   	this.props.getYoloStock();
-  	console.log("State: " + JSON.stringify(this.props.yolo));
   }
 
   stockData() {
@@ -35,7 +34,6 @@ class Yolo extends React.Component {
 	})
   }
   getView() {
-  	console.log("filtered shit: " + JSON.stringify(this.props.filteredYoloStockDataSelector));
   	if (!this.props.yolo)
 		return (<div className="wrapper">
 					<button type="button" className="btn-lg btn-danger yoloButton" onClick= {this.onButtonClicked}>YOLO</button>
@@ -51,7 +49,7 @@ class Yolo extends React.Component {
 			<div>
 				<button type="button" className="btn btn-danger" onClick={this.props.clearSelectedStock}>Back</button>
 				<h1>{this.props.selectedStock}</h1>
-				<img src={`https://chart.finance.yahoo.com/z?s=${this.props.stockTicker}&t=6m&q=l&l=on&z=s&p=m50,m200`}/>
+				<img className="graph" src={`https://chart.finance.yahoo.com/z?s=${this.props.stockTicker}&t=6m&q=l&l=on&z=s&p=m50,e200,v&a=p12,p`}/>
 			</div>)
 	else
 		return (

@@ -32,7 +32,7 @@ class Stocks extends React.Component {
 			<div>
 				<button type="button" className="btn btn-danger" onClick={this.props.clearSelectedStock}>Back</button>
 				<h1>{this.props.selectedStock}</h1>
-				<img className="graph" src={`https://chart.finance.yahoo.com/z?s=${this.props.stockTicker}&t=6m&q=l&l=on&z=s&p=m50,m200`}/>
++				<img className="graph" src={`https://chart.finance.yahoo.com/z?s=${this.props.stockTicker}&t=6m&q=l&l=on&z=s&p=m50,e200,v&a=p12,p`}/>
 			</div>
 		)
 	}
