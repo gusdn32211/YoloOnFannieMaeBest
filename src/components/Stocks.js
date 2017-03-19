@@ -2,14 +2,38 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import _ from "lodash";
-import { filteredStockDataSelector } from "../selectors";
-import { setStockData } from "../actions/stockAction";
+import { filteredStockDataSelector, selectedStockSelector } from "../selectors";
+import { setStockData, clearSelectedStock } from "../actions/stockAction";
 import TableCells from "./shared/TableCells";
 
 
 class Stocks extends React.Component {
 	constructor(props) {
    super(props);
+	}
+
+	stockView() {
+		if (!this.props.selectedStock) {
+			return (
+	    	<table className="table table-striped">
+			    <thead>
+			      <tr>
+			        <th>Ticker</th>
+			        <th>Name</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			    {this.stockData()}
+	    	  </tbody>
+	    	</table>
+			)
+		}
+		else return (
+			<div>
+				<button type="button" className="btn btn-danger" onClick={this.props.clearSelectedStock}>Back</button>
+				<h1>{this.props.selectedStock}</h1>
+			</div>
+		)
 	}
 
 	stockData() {
@@ -28,17 +52,7 @@ class Stocks extends React.Component {
   render() {
     return (
     	<div>
-	    	<table className="table table-striped">
-			    <thead>
-			      <tr>
-			        <th>Ticker</th>
-			        <th>Name</th>
-			      </tr>
-			    </thead>
-			    <tbody>
-			    {this.stockData()}
-	    	  </tbody>
-	    	</table>
+    		{this.stockView()}
     	</div>
     );
   }
@@ -46,13 +60,15 @@ class Stocks extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-		filteredStock: filteredStockDataSelector(state)
+		filteredStock: filteredStockDataSelector(state),
+		selectedStock: selectedStockSelector(state)
 	}
 }
 
 function matchDispatchToProps(dispatch) {
 	return bindActionCreators({
-		setStockData: setStockData
+		setStockData: setStockData,
+		clearSelectedStock: clearSelectedStock
 	}, dispatch)
 }
 

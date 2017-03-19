@@ -3,6 +3,8 @@ import { createSelector } from 'reselect'
 export const yoloSelector = (state) => state.yolo.showStock;
 export const fetchStockDataSelector = (state) => state.fetchStockData.data
 export const fetchYoloStockSelector = (state) => state.fetchYoloStock.data
+export const selectedStockSelector = (state) => state.selectedStock
+
 export const filteredStockDataSelector = createSelector(
 	fetchStockDataSelector,
 	(data) => {

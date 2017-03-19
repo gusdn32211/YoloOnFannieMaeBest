@@ -1,7 +1,10 @@
 import React from "react";
 import { IndexLink, Link } from "react-router";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { clearSelectedStock } from "../../actions/stockAction";
 
-export default class Nav extends React.Component {
+class Nav extends React.Component {
 
   render() {
 
@@ -15,7 +18,7 @@ export default class Nav extends React.Component {
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li>
-                <IndexLink to="/">Best Stocks</IndexLink>
+                <IndexLink to="/" onClick={this.props.clearSelectedStock}>Best Stocks</IndexLink>
               </li>
               <li>
                 <Link to="yolo">Yolo</Link>
@@ -26,3 +29,16 @@ export default class Nav extends React.Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+  }
+}
+
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators({
+    clearSelectedStock: clearSelectedStock
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Nav);

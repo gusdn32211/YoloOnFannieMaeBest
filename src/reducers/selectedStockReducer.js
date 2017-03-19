@@ -4,6 +4,9 @@ const selectedStockReducer = (state=null, action) => {
 			return action.payload
 			break;
 		}
+		case "CLEAR_SELECTED_STOCK": {
+			return false
+		}
 	}
 	return state;
 };
