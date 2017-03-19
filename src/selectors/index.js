@@ -2,9 +2,9 @@ import { createSelector } from 'reselect'
 
 export const yoloSelector = (state) => state.yolo.showStock
 export const fetchStockDataSelector = (state) => state.fetchStockData.data
-export const selectedStockTickerSelector = (state) => state.selectedStock.ticker
-export const selectedStockNameSelector = (state) => state.selectedStock.name
-export const fetchYoloStockSelector = (state) => state.fetchYoloStock
+export const selectedStockSelector = (state) => state.selectedStock
+export const fetchYoloStockDataSelector = (state) => state.fetchYoloStock.data
+export const fetchYoloStockStateSelector = (state) => state.fetchYoloStock.fetching
 
 export const filteredStockDataSelector = createSelector(
 	fetchStockDataSelector,
@@ -15,9 +15,26 @@ export const filteredStockDataSelector = createSelector(
 			return filteredData
 		}
 		else return [{
-		    "count": 0, 
+		    "count": 0,
 		    "ticker": "$FNMA",
 		    "name": "Federal National Mortgage Assctn Fnni Me"
+		}]
+	}
+)
+
+export const filteredYoloStockDataSelector = createSelector(
+	fetchYoloStockDataSelector,
+	(data) => {
+		if (data) {
+			let sortedData = _.sortBy(data, ['analysis_score']).reverse();
+			return sortedData
+		}
+		else return [{
+		    "count": 0,
+		    "ticker": "$FNMA",
+		    "name": "Federal National Mortgage Assctn Fnni Me",
+		    "price": "0.00",
+		    "analysis_score": "99999999"
 		}]
 	}
 )
