@@ -10,7 +10,7 @@ export default {
 	output: {
       path: '/',
       publicPath: '/'
-  	},	
+  	},
   	plugins: [
 	  	new webpack.NoErrorsPlugin(),
 	  	new webpack.optimize.OccurenceOrderPlugin(),
@@ -20,7 +20,7 @@ export default {
 		loaders: [
 		 {
 		 	test: /\.js$/,
-		 	include: [ 
+		 	include: [
 		 		path.join(__dirname, 'src'),
 		 		path.join(__dirname, 'server/shared')
 		 	],
