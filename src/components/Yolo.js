@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import {getYoloStock} from "../actions/yoloAction"
-import { yoloSelector, stockSelector } from "../selectors";
+import { yoloSelector, fetchYoloStockSelector } from "../selectors";
 
 class Yolo extends React.Component {
   constructor(props) {
@@ -19,6 +19,8 @@ class Yolo extends React.Component {
   getView() {
   	if (!this.props.yolo)
 		return (<button type="button" className="btn btn-danger" onClick= {this.onButtonClicked}>YOLO</button>)
+	else
+		return (<h1>YOLO ON {this.props.fetchYoloStock.ticker}</h1>)
   }
 
   render() {
@@ -33,7 +35,8 @@ class Yolo extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-		yolo: yoloSelector(state)
+		yolo: yoloSelector(state),
+		fetchYoloStock: fetchYoloStockSelector(state)
 	}
 } 
 
