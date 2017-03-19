@@ -13,7 +13,8 @@ export const filteredStockDataSelector = createSelector(
 		}
 		else return [{
 		    "count": 0, 
-		    "ticker": "$FNMA"
+		    "ticker": "$FNMA",
+		    "name": "Federal National Mortgage Assctn Fnni Me"
 		}]
 	}
 )

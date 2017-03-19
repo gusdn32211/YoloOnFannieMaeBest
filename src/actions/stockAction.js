@@ -1,6 +1,6 @@
-export function setStockData(data) {
+export function setStockData(stockName) {
 	return {
-		type: 'SET_STOCK_DATA',
-		payload: data
+		type: 'SET_SELECTED_STOCK',
+		payload: stockName
 	}
 }
