@@ -20,3 +20,15 @@ export const filteredStockDataSelector = createSelector(
 		}]
 	}
 )
+
+export const stockTickerSelector = createSelector(
+	selectedStockSelector,
+	(ticker) => {
+		if (ticker) {
+			const length = ticker.length;
+			ticker = ticker.slice(1, length);
+			return ticker;
+		}
+		else return ""
+	}
+)
