@@ -15,10 +15,7 @@ export default class App extends React.Component {
         <div className="container navMargin">
           <div className="row">
             <div className="col-lg-12">
-              <h1>Clarence Page</h1>
-
               {this.props.children}
-
             </div>
           </div>
           <Footer/>

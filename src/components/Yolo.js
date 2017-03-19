@@ -18,9 +18,16 @@ class Yolo extends React.Component {
 
   getView() {
   	if (!this.props.yolo)
-		return (<button type="button" className="btn btn-danger" onClick= {this.onButtonClicked}>YOLO</button>)
+		return (<div className="wrapper">
+					<button type="button" className="btn-lg btn-danger yoloButton" onClick= {this.onButtonClicked}>YOLO</button>
+				</div>)
+	else if (this.props.fetchYoloStock.fetching)
+		return (<div>
+					<h1 className="loading">Please wait while we are predicting semantic analysis...</h1>
+					<h1 className="loading">Check out our <a href="https://www.facebook.com/felist123/">Facebook Page</a></h1>
+				</div>)
 	else
-		return (<h1>YOLO ON {this.props.fetchYoloStock.ticker}</h1>)
+		return (<h1>YOLO ON {this.props.fetchYoloStock.data.name}</h1>)
   }
 
   render() {
