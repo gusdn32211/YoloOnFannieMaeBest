@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import _ from "lodash";
-import { filteredStockDataSelector, stockTickerSelector, selectedStockNameSelector } from "../selectors";
+import { filteredStockDataSelector, stockTickerSelector } from "../selectors";
 import { setStockTicker, setStockName, clearSelectedStock } from "../actions/stockAction";
 import TableCells from "./shared/TableCells";
 
@@ -62,8 +62,7 @@ class Stocks extends React.Component {
 function mapStateToProps(state) {
 	return {
 		filteredStock: filteredStockDataSelector(state),
-		stockTicker: stockTickerSelector(state),
-		stockName: selectedStockNameSelector(state)
+		stockTicker: stockTickerSelector(state)
 	}
 }
 
