@@ -1,13 +1,18 @@
 import React from "react";
-import stocks from "../data/stocks";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import _ from "lodash";
+import { stockSelector } from "../selectors";
 
-export default class Stocks extends React.Component {
+class Stocks extends React.Component {
   render() {
-    const stockData = _.map(stocks, (stock) => {
-      	return (<tr key = {stock.ticker}>
-      				<td>{stock.ticker}</td>
-      				<td>{stock.name}</td>
-      			</tr>)
+    const stockData = _.map(this.props.stock, (stock) => {
+    	return (
+    		<tr key={stock.ticker}>
+  				<td>{stock.ticker}</td>
+  				<td>{stock.name}</td>
+  			</tr>
+  		)
     })
     return (
     	<div>
@@ -26,3 +31,11 @@ export default class Stocks extends React.Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+	return {
+		stock: stockSelector(state)
+	}
+}
+
+export default connect(mapStateToProps)(Stocks);

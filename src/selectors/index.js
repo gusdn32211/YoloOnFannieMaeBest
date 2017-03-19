@@ -1,3 +1,3 @@
 import { createSelector } from 'reselect'
 
-export const registerSelector = (state) => state.register;
+export const stockSelector = (state) => state.stock.data;

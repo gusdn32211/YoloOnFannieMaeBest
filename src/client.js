@@ -5,7 +5,6 @@ import { Router, Route, IndexRoute, browserHistory } from "react-router";
 import { render } from 'react-dom';
 import Yolo from "./components/Yolo";
 import Stocks from "./components/Stocks";
-import Home from "./components/Home";
 import App from "./components/App";
 
 import store from "./store"
