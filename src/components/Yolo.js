@@ -95,7 +95,7 @@ class Yolo extends React.Component {
 		if (this.props.yoloStockState.fetching)
 			return (
 				<div>
-					<h1 className="loading">Please wait while we are predicting semantic analysis...</h1>
+					<h1 className="loading">Please wait while we are doing sentiment analysis...</h1>
 					<h1 className="loading">Check out our <a  target="_blank" href="https://www.facebook.com/YoloOnFNMA-211269462684651/">Facebook Page</a></h1>
 					<img className="doge" src="http://vignette1.wikia.nocookie.net/sanicsource/images/9/97/Doge.jpg/revision/latest?cb=20160112233015"/>
 				</div>
