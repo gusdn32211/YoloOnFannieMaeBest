@@ -14,7 +14,7 @@ class Nav extends React.Component {
         <div className="container">
             <ul className="nav navbar-nav">
               <li>
-                <Link className="navbarHeader">Yolo On Fannie Mae</Link>
+              <img className="logo" src="http://i.imgur.com/JsXfGqe.png"/>
               </li>
             </ul>
             <ul className="nav navbar-nav navbar-right">

@@ -72,6 +72,7 @@ class Stocks extends React.Component {
   render() {
     return (
     	<div>
+    		<h3>This app takes data from /r/wallstreetbets and performs sentiment analysis on it to recommend stocks that you should yolo on.</h3>
     		{this.stockView()}
     	</div>
     );

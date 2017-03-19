@@ -5,7 +5,7 @@ export default class Footer extends React.Component {
     return (
       <footer>
         <div className="footer">
-          <p></p>
+          <p>We are not responsible for any losses that might have come from using this application</p>
         </div>
       </footer>
     );
