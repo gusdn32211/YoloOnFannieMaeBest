@@ -7,6 +7,9 @@ const yoloReducer = (state="", action) => {
 		case "CLEAR_SELECTED_YOLO_STOCK": {
 			return ""
 		}
+		case "CLEAR_YOLO_DATA": {
+			return ""
+		}
 	}
 	return state;
 };

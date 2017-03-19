@@ -3,6 +3,7 @@ import { IndexLink, Link } from "react-router";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { clearSelectedStock } from "../../actions/stockAction";
+import { clearYoloData } from "../../actions/yoloAction";
 
 class Nav extends React.Component {
 
@@ -21,7 +22,7 @@ class Nav extends React.Component {
                 <IndexLink to="/" onClick={this.props.clearSelectedStock}>Best Stocks</IndexLink>
               </li>
               <li>
-                <Link to="yolo">Yolo</Link>
+                <Link to="yolo" onClick={this.props.clearYoloData}>Yolo</Link>
               </li>
             </ul>
           </div>
@@ -37,7 +38,8 @@ function mapStateToProps(state) {
 
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
-    clearSelectedStock: clearSelectedStock
+    clearSelectedStock: clearSelectedStock,
+    clearYoloData: clearYoloData
   }, dispatch)
 }
 

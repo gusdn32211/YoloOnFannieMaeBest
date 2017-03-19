@@ -15,8 +15,14 @@ export function clearSelectedYoloStock() {
 
 export function getYoloStock() {
 	return {
-		type: "FETCH_YOLO_STOCK",
+		type: 'FETCH_YOLO_STOCK',
 		payload: axios.get("http://yolo-on-fannie-mae.herokuapp.com/yolo_buy")
+	}
+}
+
+export function clearYoloData() {
+	return {
+		type: 'CLEAR_YOLO_DATA'
 	}
 }
 

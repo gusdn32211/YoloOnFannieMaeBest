@@ -23,6 +23,9 @@ const fetchYoloStockReducer = (state=initialState, action) => {
 			}
 			break;
 		}
+		case "CLEAR_YOLO_DATA": {
+			return initialState
+		}
 	}
 	return state;
 };
